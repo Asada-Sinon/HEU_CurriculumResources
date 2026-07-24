@@ -1,0 +1,14 @@
+#-----------------------------------------------------------
+# Vivado v2017.4 (64-bit)
+# SW Build 2086221 on Fri Dec 15 20:55:39 MST 2017
+# IP Build 2085800 on Fri Dec 15 22:25:07 MST 2017
+# Start of session at: Fri Oct 10 09:12:53 2025
+# Process ID: 15716
+# Current directory: C:/Users/Lenovo/Desktop/7-3
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent11008 C:\Users\Lenovo\Desktop\7-3\7-3.xpr
+# Log file: C:/Users/Lenovo/Desktop/7-3/vivado.log
+# Journal file: C:/Users/Lenovo/Desktop/7-3\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/Lenovo/Desktop/7-3/7-3.xpr
+update_compile_order -fileset sources_1

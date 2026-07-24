@@ -1,0 +1,742 @@
+
+*** Running vivado
+    with args -log digital_lock_top.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source digital_lock_top.tcl
+
+
+****** Vivado v2017.4 (64-bit)
+  **** SW Build 2086221 on Fri Dec 15 20:55:39 MST 2017
+  **** IP Build 2085800 on Fri Dec 15 22:25:07 MST 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+source digital_lock_top.tcl -notrace
+Command: synth_design -top digital_lock_top -part xc7a35tcsg324-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: Launching helper process for spawning children vivado processes
+INFO: Helper process launched with PID 3752 
+WARNING: [Synth 8-2292] literal value truncated to fit in 22 bits [C:/Users/Lenovo/Desktop/77777/7-3.srcs/sources_1/new/key_detector.v:12]
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 355.594 ; gain = 112.266
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'digital_lock_top' [C:/Users/Lenovo/Desktop/77777/7-3.srcs/sources_1/new/digital_lock_top.v:6]
+INFO: [Synth 8-638] synthesizing module 'clock_divider' [C:/Users/Lenovo/Desktop/77777/7-3.srcs/sources_1/new/clock_divider.v:6]
+	Parameter COUNT_MAX bound to: 26'b01011111010111100001000000 
+INFO: [Synth 8-256] done synthesizing module 'clock_divider' (1#1) [C:/Users/Lenovo/Desktop/77777/7-3.srcs/sources_1/new/clock_divider.v:6]
+INFO: [Synth 8-638] synthesizing module 'switch_debounce' [C:/Users/Lenovo/Desktop/77777/7-3.srcs/sources_1/new/switch_debounce.v:4]
+	Parameter DEBOUNCE_TIME bound to: 20000000 - type: integer 
+	Parameter COUNTER_MAX bound to: 19999999 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'switch_debounce' (2#1) [C:/Users/Lenovo/Desktop/77777/7-3.srcs/sources_1/new/switch_debounce.v:4]
+INFO: [Synth 8-638] synthesizing module 'keyboard_4x4' [C:/Users/Lenovo/Desktop/77777/7-3.srcs/sources_1/new/keyboard_4x4.v:6]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/Lenovo/Desktop/77777/7-3.srcs/sources_1/new/keyboard_4x4.v:65]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/Lenovo/Desktop/77777/7-3.srcs/sources_1/new/keyboard_4x4.v:86]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/Lenovo/Desktop/77777/7-3.srcs/sources_1/new/keyboard_4x4.v:107]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/Lenovo/Desktop/77777/7-3.srcs/sources_1/new/keyboard_4x4.v:128]
+INFO: [Synth 8-256] done synthesizing module 'keyboard_4x4' (3#1) [C:/Users/Lenovo/Desktop/77777/7-3.srcs/sources_1/new/keyboard_4x4.v:6]
+INFO: [Synth 8-638] synthesizing module 'password_controller' [C:/Users/Lenovo/Desktop/77777/7-3.srcs/sources_1/new/password_controller.v:6]
+	Parameter MODE_BRUTE_FORCE bound to: 2'b11 
+	Parameter IDLE bound to: 3'b000 
+	Parameter SET_PASSWORD bound to: 3'b001 
+	Parameter INPUT_PASSWORD bound to: 3'b010 
+	Parameter CHECK_PASSWORD bound to: 3'b011 
+	Parameter UNLOCK bound to: 3'b100 
+	Parameter ALARM bound to: 3'b101 
+	Parameter ATTACK_DEFENSE bound to: 3'b110 
+INFO: [Synth 8-638] synthesizing module 'key_detector' [C:/Users/Lenovo/Desktop/77777/7-3.srcs/sources_1/new/key_detector.v:4]
+	Parameter DEBOUNCE_TIME bound to: 22'b0011000100101100111111 
+	Parameter LONG_PRESS_TIME bound to: 26'b10111110101111000001111111 
+	Parameter REPEAT_TIME bound to: 24'b100110001001011001111111 
+	Parameter IDLE bound to: 3'b000 
+	Parameter DEBOUNCE_PRESS bound to: 3'b001 
+	Parameter PRESSED bound to: 3'b010 
+	Parameter LONG_ACTIVE bound to: 3'b100 
+	Parameter DEBOUNCE_RELEASE bound to: 3'b101 
+INFO: [Synth 8-256] done synthesizing module 'key_detector' (4#1) [C:/Users/Lenovo/Desktop/77777/7-3.srcs/sources_1/new/key_detector.v:4]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/Lenovo/Desktop/77777/7-3.srcs/sources_1/new/password_controller.v:301]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/Lenovo/Desktop/77777/7-3.srcs/sources_1/new/password_controller.v:320]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/Lenovo/Desktop/77777/7-3.srcs/sources_1/new/password_controller.v:392]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/Lenovo/Desktop/77777/7-3.srcs/sources_1/new/password_controller.v:590]
+WARNING: [Synth 8-6014] Unused sequential element keypad_input_count_reg was removed.  [C:/Users/Lenovo/Desktop/77777/7-3.srcs/sources_1/new/password_controller.v:359]
+WARNING: [Synth 8-6014] Unused sequential element attack_timer_reg was removed.  [C:/Users/Lenovo/Desktop/77777/7-3.srcs/sources_1/new/password_controller.v:363]
+WARNING: [Synth 8-6014] Unused sequential element mode_switch_detected_reg was removed.  [C:/Users/Lenovo/Desktop/77777/7-3.srcs/sources_1/new/password_controller.v:366]
+WARNING: [Synth 8-5788] Register current_state_debug_reg in module password_controller is has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Lenovo/Desktop/77777/7-3.srcs/sources_1/new/password_controller.v:390]
+INFO: [Synth 8-256] done synthesizing module 'password_controller' (5#1) [C:/Users/Lenovo/Desktop/77777/7-3.srcs/sources_1/new/password_controller.v:6]
+INFO: [Synth 8-638] synthesizing module 'seg_display_controller' [C:/Users/Lenovo/Desktop/77777/7-3.srcs/sources_1/new/seg_display_controller.v:2]
+INFO: [Synth 8-256] done synthesizing module 'seg_display_controller' (6#1) [C:/Users/Lenovo/Desktop/77777/7-3.srcs/sources_1/new/seg_display_controller.v:2]
+INFO: [Synth 8-638] synthesizing module 'led_controller' [C:/Users/Lenovo/Desktop/77777/7-3.srcs/sources_1/new/led_controller.v:2]
+INFO: [Synth 8-256] done synthesizing module 'led_controller' (7#1) [C:/Users/Lenovo/Desktop/77777/7-3.srcs/sources_1/new/led_controller.v:2]
+INFO: [Synth 8-638] synthesizing module 'uart_data_tx' [C:/Users/Lenovo/Desktop/77777/7-3.srcs/sources_1/new/uart_data_tx.v:2]
+INFO: [Synth 8-638] synthesizing module 'uart_byte_tx' [C:/Users/Lenovo/Desktop/77777/7-3.srcs/sources_1/new/uart_data_tx.v:83]
+	Parameter START_BIT bound to: 1'b0 
+	Parameter STOP_BIT bound to: 1'b1 
+INFO: [Synth 8-256] done synthesizing module 'uart_byte_tx' (8#1) [C:/Users/Lenovo/Desktop/77777/7-3.srcs/sources_1/new/uart_data_tx.v:83]
+WARNING: [Synth 8-5788] Register byte_tx_data_reg in module uart_data_tx is has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/Lenovo/Desktop/77777/7-3.srcs/sources_1/new/uart_data_tx.v:46]
+INFO: [Synth 8-256] done synthesizing module 'uart_data_tx' (9#1) [C:/Users/Lenovo/Desktop/77777/7-3.srcs/sources_1/new/uart_data_tx.v:2]
+INFO: [Synth 8-638] synthesizing module 'uart_data_rx' [C:/Users/Lenovo/Desktop/77777/7-3.srcs/sources_1/new/uart_data_rx.v:3]
+	Parameter BAUD_9600 bound to: 10416 - type: integer 
+	Parameter BAUD_19200 bound to: 5208 - type: integer 
+	Parameter BAUD_38400 bound to: 2604 - type: integer 
+	Parameter BAUD_115200 bound to: 868 - type: integer 
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/Lenovo/Desktop/77777/7-3.srcs/sources_1/new/uart_data_rx.v:73]
+INFO: [Synth 8-256] done synthesizing module 'uart_data_rx' (10#1) [C:/Users/Lenovo/Desktop/77777/7-3.srcs/sources_1/new/uart_data_rx.v:3]
+INFO: [Synth 8-256] done synthesizing module 'digital_lock_top' (11#1) [C:/Users/Lenovo/Desktop/77777/7-3.srcs/sources_1/new/digital_lock_top.v:6]
+WARNING: [Synth 8-3917] design digital_lock_top has port DP0 driven by constant 0
+WARNING: [Synth 8-3917] design digital_lock_top has port DP1 driven by constant 0
+WARNING: [Synth 8-3331] design led_controller has unconnected port input_mode[1]
+WARNING: [Synth 8-3331] design led_controller has unconnected port input_mode[0]
+WARNING: [Synth 8-3331] design seg_display_controller has unconnected port input_complete
+WARNING: [Synth 8-3331] design seg_display_controller has unconnected port current_bit_pos[2]
+WARNING: [Synth 8-3331] design seg_display_controller has unconnected port current_bit_pos[1]
+WARNING: [Synth 8-3331] design seg_display_controller has unconnected port current_bit_pos[0]
+WARNING: [Synth 8-3331] design seg_display_controller has unconnected port input_mode[1]
+WARNING: [Synth 8-3331] design seg_display_controller has unconnected port input_mode[0]
+WARNING: [Synth 8-3331] design digital_lock_top has unconnected port sw_pin[5]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 398.738 ; gain = 155.410
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 398.738 ; gain = 155.410
+---------------------------------------------------------------------------------
+INFO: [Device 21-403] Loading part xc7a35tcsg324-1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [C:/Users/Lenovo/Desktop/77777/7-3.srcs/constrs_1/new/digital_lock.xdc]
+WARNING: [Vivado 12-584] No ports matched 'sw[0]'. [C:/Users/Lenovo/Desktop/77777/7-3.srcs/constrs_1/new/digital_lock.xdc:22]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Lenovo/Desktop/77777/7-3.srcs/constrs_1/new/digital_lock.xdc:22]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'sw[1]'. [C:/Users/Lenovo/Desktop/77777/7-3.srcs/constrs_1/new/digital_lock.xdc:23]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Lenovo/Desktop/77777/7-3.srcs/constrs_1/new/digital_lock.xdc:23]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'sw[2]'. [C:/Users/Lenovo/Desktop/77777/7-3.srcs/constrs_1/new/digital_lock.xdc:24]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Lenovo/Desktop/77777/7-3.srcs/constrs_1/new/digital_lock.xdc:24]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'sw[3]'. [C:/Users/Lenovo/Desktop/77777/7-3.srcs/constrs_1/new/digital_lock.xdc:25]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Lenovo/Desktop/77777/7-3.srcs/constrs_1/new/digital_lock.xdc:25]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'sw[4]'. [C:/Users/Lenovo/Desktop/77777/7-3.srcs/constrs_1/new/digital_lock.xdc:26]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Lenovo/Desktop/77777/7-3.srcs/constrs_1/new/digital_lock.xdc:26]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'sw[5]'. [C:/Users/Lenovo/Desktop/77777/7-3.srcs/constrs_1/new/digital_lock.xdc:27]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Lenovo/Desktop/77777/7-3.srcs/constrs_1/new/digital_lock.xdc:27]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'sw[6]'. [C:/Users/Lenovo/Desktop/77777/7-3.srcs/constrs_1/new/digital_lock.xdc:28]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Lenovo/Desktop/77777/7-3.srcs/constrs_1/new/digital_lock.xdc:28]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'sw[7]'. [C:/Users/Lenovo/Desktop/77777/7-3.srcs/constrs_1/new/digital_lock.xdc:29]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Lenovo/Desktop/77777/7-3.srcs/constrs_1/new/digital_lock.xdc:29]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'sw[7]'. [C:/Users/Lenovo/Desktop/77777/7-3.srcs/constrs_1/new/digital_lock.xdc:82]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Lenovo/Desktop/77777/7-3.srcs/constrs_1/new/digital_lock.xdc:82]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'sw[6]'. [C:/Users/Lenovo/Desktop/77777/7-3.srcs/constrs_1/new/digital_lock.xdc:83]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Lenovo/Desktop/77777/7-3.srcs/constrs_1/new/digital_lock.xdc:83]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'sw[5]'. [C:/Users/Lenovo/Desktop/77777/7-3.srcs/constrs_1/new/digital_lock.xdc:84]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Lenovo/Desktop/77777/7-3.srcs/constrs_1/new/digital_lock.xdc:84]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'sw[4]'. [C:/Users/Lenovo/Desktop/77777/7-3.srcs/constrs_1/new/digital_lock.xdc:85]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Lenovo/Desktop/77777/7-3.srcs/constrs_1/new/digital_lock.xdc:85]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'sw[3]'. [C:/Users/Lenovo/Desktop/77777/7-3.srcs/constrs_1/new/digital_lock.xdc:86]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Lenovo/Desktop/77777/7-3.srcs/constrs_1/new/digital_lock.xdc:86]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'sw[2]'. [C:/Users/Lenovo/Desktop/77777/7-3.srcs/constrs_1/new/digital_lock.xdc:87]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Lenovo/Desktop/77777/7-3.srcs/constrs_1/new/digital_lock.xdc:87]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'sw[1]'. [C:/Users/Lenovo/Desktop/77777/7-3.srcs/constrs_1/new/digital_lock.xdc:88]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Lenovo/Desktop/77777/7-3.srcs/constrs_1/new/digital_lock.xdc:88]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'sw[0]'. [C:/Users/Lenovo/Desktop/77777/7-3.srcs/constrs_1/new/digital_lock.xdc:89]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Lenovo/Desktop/77777/7-3.srcs/constrs_1/new/digital_lock.xdc:89]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+Finished Parsing XDC File [C:/Users/Lenovo/Desktop/77777/7-3.srcs/constrs_1/new/digital_lock.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/Lenovo/Desktop/77777/7-3.srcs/constrs_1/new/digital_lock.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/digital_lock_top_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/digital_lock_top_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.006 . Memory (MB): peak = 737.465 ; gain = 0.000
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:22 ; elapsed = 00:00:24 . Memory (MB): peak = 737.465 ; gain = 494.137
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a35tcsg324-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:22 ; elapsed = 00:00:24 . Memory (MB): peak = 737.465 ; gain = 494.137
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:22 ; elapsed = 00:00:24 . Memory (MB): peak = 737.465 ; gain = 494.137
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-6014] Unused sequential element count_reg was removed.  [C:/Users/Lenovo/Desktop/77777/7-3.srcs/sources_1/new/clock_divider.v:19]
+INFO: [Synth 8-4471] merging register 'sw_out_reg[2:0]' into 'sw_stable_reg[2:0]' [C:/Users/Lenovo/Desktop/77777/7-3.srcs/sources_1/new/switch_debounce.v:41]
+WARNING: [Synth 8-6014] Unused sequential element sw_out_reg was removed.  [C:/Users/Lenovo/Desktop/77777/7-3.srcs/sources_1/new/switch_debounce.v:41]
+INFO: [Synth 8-5544] ROM "key_detected" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "detected_key" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "detected_key" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "detected_key" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "detected_key" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+WARNING: [Synth 8-6014] Unused sequential element scan_counter_reg was removed.  [C:/Users/Lenovo/Desktop/77777/7-3.srcs/sources_1/new/keyboard_4x4.v:21]
+WARNING: [Synth 8-6014] Unused sequential element debounce_counter_reg was removed.  [C:/Users/Lenovo/Desktop/77777/7-3.srcs/sources_1/new/keyboard_4x4.v:157]
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'key_detector'
+INFO: [Synth 8-5544] ROM "state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'password_controller'
+INFO: [Synth 8-5544] ROM "ble_set_mode" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "input_password" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "digit_blink_ctrl" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "system_locked" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "input_mode" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "blink_enable" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "attack_count" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "failed_attempts" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "next_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "next_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "next_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "next_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "next_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+WARNING: [Synth 8-6014] Unused sequential element blink_counter_reg was removed.  [C:/Users/Lenovo/Desktop/77777/7-3.srcs/sources_1/new/password_controller.v:202]
+WARNING: [Synth 8-6014] Unused sequential element reset_stable_count_reg was removed.  [C:/Users/Lenovo/Desktop/77777/7-3.srcs/sources_1/new/password_controller.v:78]
+INFO: [Synth 8-5544] ROM "ble_set_mode" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "input_password" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "digit_blink_ctrl" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "system_locked" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "input_mode" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "blink_enable" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "attack_count" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "failed_attempts" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "next_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "next_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "next_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "next_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "next_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "digit_blink_ctrl" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "led_blink_ctrl" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "ble_password" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "ble_password" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "input_mode" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "keypad_to_decimal" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5545] ROM "seg_dn0" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5545] ROM "seg_dn0" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5545] ROM "seg_dn0" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+WARNING: [Synth 8-6014] Unused sequential element scan_counter_reg was removed.  [C:/Users/Lenovo/Desktop/77777/7-3.srcs/sources_1/new/seg_display_controller.v:41]
+INFO: [Synth 8-5544] ROM "uart_state" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5546] ROM "bps_clk" won't be mapped to RAM because it is too sparse
+WARNING: [Synth 8-6014] Unused sequential element byte_tx_cnt_reg was removed.  [C:/Users/Lenovo/Desktop/77777/7-3.srcs/sources_1/new/uart_data_tx.v:30]
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    IDLE |                              000 |                              000
+          DEBOUNCE_PRESS |                              001 |                              001
+                 PRESSED |                              010 |                              010
+             LONG_ACTIVE |                              011 |                              100
+        DEBOUNCE_RELEASE |                              100 |                              101
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'key_detector'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    IDLE |                              000 |                              000
+          INPUT_PASSWORD |                              001 |                              010
+          CHECK_PASSWORD |                              100 |                              011
+                  UNLOCK |                              101 |                              100
+                   ALARM |                              110 |                              101
+            SET_PASSWORD |                              010 |                              001
+          ATTACK_DEFENSE |                              011 |                              110
+                  iSTATE |                              111 |                              111
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'current_state_reg' using encoding 'sequential' in module 'password_controller'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:24 ; elapsed = 00:00:26 . Memory (MB): peak = 737.465 ; gain = 494.137
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 2     
+	   2 Input     27 Bit       Adders := 5     
+	   2 Input     25 Bit       Adders := 4     
+	   2 Input     16 Bit       Adders := 2     
+	   3 Input     10 Bit       Adders := 1     
+	   2 Input      8 Bit       Adders := 2     
+	   2 Input      4 Bit       Adders := 30    
+	   2 Input      3 Bit       Adders := 4     
+	   2 Input      2 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 6     
+	               27 Bit    Registers := 5     
+	               25 Bit    Registers := 4     
+	               16 Bit    Registers := 4     
+	                8 Bit    Registers := 8     
+	                4 Bit    Registers := 8     
+	                3 Bit    Registers := 8     
+	                2 Bit    Registers := 3     
+	                1 Bit    Registers := 59    
++---Muxes : 
+	  10 Input     32 Bit        Muxes := 1     
+	   2 Input     32 Bit        Muxes := 12    
+	   8 Input     32 Bit        Muxes := 5     
+	   2 Input     27 Bit        Muxes := 30    
+	   5 Input     27 Bit        Muxes := 5     
+	   2 Input     25 Bit        Muxes := 8     
+	   9 Input     16 Bit        Muxes := 1     
+	   3 Input     16 Bit        Muxes := 2     
+	   2 Input     16 Bit        Muxes := 6     
+	   2 Input     14 Bit        Muxes := 1     
+	   4 Input     14 Bit        Muxes := 1     
+	   6 Input     13 Bit        Muxes := 1     
+	   2 Input      8 Bit        Muxes := 6     
+	   8 Input      8 Bit        Muxes := 4     
+	   4 Input      8 Bit        Muxes := 1     
+	  14 Input      8 Bit        Muxes := 1     
+	  12 Input      7 Bit        Muxes := 8     
+	   8 Input      7 Bit        Muxes := 1     
+	   7 Input      7 Bit        Muxes := 1     
+	   6 Input      7 Bit        Muxes := 2     
+	   4 Input      4 Bit        Muxes := 1     
+	   5 Input      4 Bit        Muxes := 3     
+	   8 Input      4 Bit        Muxes := 2     
+	   2 Input      4 Bit        Muxes := 32    
+	  11 Input      4 Bit        Muxes := 1     
+	   9 Input      3 Bit        Muxes := 5     
+	   2 Input      3 Bit        Muxes := 7     
+	   8 Input      3 Bit        Muxes := 3     
+	  24 Input      3 Bit        Muxes := 1     
+	   8 Input      2 Bit        Muxes := 1     
+	   4 Input      2 Bit        Muxes := 1     
+	   5 Input      1 Bit        Muxes := 16    
+	   2 Input      1 Bit        Muxes := 50    
+	   3 Input      1 Bit        Muxes := 1     
+	   8 Input      1 Bit        Muxes := 27    
+	   4 Input      1 Bit        Muxes := 7     
+	  11 Input      1 Bit        Muxes := 1     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Hierarchical Component Statistics 
+---------------------------------------------------------------------------------
+Hierarchical RTL Component report 
+Module clock_divider 
+Detailed RTL Component Info : 
++---Registers : 
+	                1 Bit    Registers := 1     
+Module switch_debounce 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     25 Bit       Adders := 3     
++---Registers : 
+	               25 Bit    Registers := 3     
+	                3 Bit    Registers := 3     
++---Muxes : 
+	   2 Input     25 Bit        Muxes := 6     
+Module keyboard_4x4 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      2 Bit       Adders := 1     
++---Registers : 
+	                4 Bit    Registers := 3     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 5     
++---Muxes : 
+	   4 Input      4 Bit        Muxes := 1     
+	   5 Input      4 Bit        Muxes := 3     
+	   8 Input      4 Bit        Muxes := 1     
+	   5 Input      1 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 3     
+Module key_detector 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     27 Bit       Adders := 1     
++---Registers : 
+	               27 Bit    Registers := 1     
+	                1 Bit    Registers := 6     
++---Muxes : 
+	   2 Input     27 Bit        Muxes := 6     
+	   5 Input     27 Bit        Muxes := 1     
+	   9 Input      3 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 3     
+	   5 Input      1 Bit        Muxes := 3     
+Module password_controller 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     25 Bit       Adders := 1     
+	   2 Input      8 Bit       Adders := 1     
+	   2 Input      4 Bit       Adders := 27    
+	   2 Input      3 Bit       Adders := 2     
++---Registers : 
+	               32 Bit    Registers := 6     
+	               25 Bit    Registers := 1     
+	                8 Bit    Registers := 3     
+	                4 Bit    Registers := 3     
+	                3 Bit    Registers := 3     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 12    
++---Muxes : 
+	  10 Input     32 Bit        Muxes := 1     
+	   2 Input     32 Bit        Muxes := 12    
+	   8 Input     32 Bit        Muxes := 5     
+	   2 Input     25 Bit        Muxes := 2     
+	   2 Input      8 Bit        Muxes := 5     
+	   8 Input      8 Bit        Muxes := 3     
+	   2 Input      4 Bit        Muxes := 30    
+	   8 Input      4 Bit        Muxes := 1     
+	   2 Input      3 Bit        Muxes := 5     
+	   8 Input      3 Bit        Muxes := 3     
+	  24 Input      3 Bit        Muxes := 1     
+	   8 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 24    
+	   3 Input      1 Bit        Muxes := 1     
+	   8 Input      1 Bit        Muxes := 27    
+Module seg_display_controller 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      4 Bit       Adders := 1     
+	   2 Input      3 Bit       Adders := 2     
++---Registers : 
+	                3 Bit    Registers := 2     
+	                1 Bit    Registers := 1     
++---Muxes : 
+	   8 Input      8 Bit        Muxes := 1     
+	  12 Input      7 Bit        Muxes := 8     
+	   8 Input      7 Bit        Muxes := 1     
+	   7 Input      7 Bit        Muxes := 1     
+	   6 Input      7 Bit        Muxes := 2     
+	   2 Input      3 Bit        Muxes := 2     
+Module led_controller 
+Detailed RTL Component Info : 
++---Registers : 
+	               16 Bit    Registers := 1     
++---Muxes : 
+	   9 Input     16 Bit        Muxes := 1     
+	   3 Input     16 Bit        Muxes := 2     
+	   2 Input     16 Bit        Muxes := 2     
+Module uart_byte_tx 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     16 Bit       Adders := 1     
+	   2 Input      4 Bit       Adders := 1     
++---Registers : 
+	               16 Bit    Registers := 2     
+	                8 Bit    Registers := 1     
+	                4 Bit    Registers := 1     
+	                1 Bit    Registers := 4     
++---Muxes : 
+	   2 Input     16 Bit        Muxes := 2     
+	   6 Input     13 Bit        Muxes := 1     
+	   2 Input      4 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 4     
+Module uart_data_tx 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 1     
+	   3 Input     10 Bit       Adders := 1     
+	   2 Input      8 Bit       Adders := 1     
++---Registers : 
+	                8 Bit    Registers := 2     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 2     
++---Muxes : 
+	   2 Input      8 Bit        Muxes := 1     
+	   4 Input      8 Bit        Muxes := 1     
+	   4 Input      2 Bit        Muxes := 1     
+	   4 Input      1 Bit        Muxes := 7     
+	   2 Input      1 Bit        Muxes := 1     
+Module uart_data_rx 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 1     
+	   2 Input     16 Bit       Adders := 1     
+	   2 Input      4 Bit       Adders := 1     
++---Registers : 
+	               16 Bit    Registers := 1     
+	                8 Bit    Registers := 2     
+	                4 Bit    Registers := 1     
+	                1 Bit    Registers := 4     
++---Muxes : 
+	   2 Input     16 Bit        Muxes := 2     
+	   2 Input     14 Bit        Muxes := 1     
+	   4 Input     14 Bit        Muxes := 1     
+	  14 Input      8 Bit        Muxes := 1     
+	   2 Input      4 Bit        Muxes := 1     
+	  11 Input      4 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 3     
+	  11 Input      1 Bit        Muxes := 1     
+---------------------------------------------------------------------------------
+Finished RTL Hierarchical Component Statistics
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 90 (col length:60)
+BRAMs: 100 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+INFO: [Synth 8-5544] ROM "digit_blink_ctrl" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "p_2_out0" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "p_2_out0" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+WARNING: [Synth 8-6014] Unused sequential element reset_stable_count_reg was removed.  [C:/Users/Lenovo/Desktop/77777/7-3.srcs/sources_1/new/password_controller.v:78]
+WARNING: [Synth 8-6014] Unused sequential element blink_counter_reg was removed.  [C:/Users/Lenovo/Desktop/77777/7-3.srcs/sources_1/new/password_controller.v:202]
+INFO: [Synth 8-5546] ROM "bps_clk" won't be mapped to RAM because it is too sparse
+WARNING: [Synth 8-6014] Unused sequential element byte_tx_cnt_reg was removed.  [C:/Users/Lenovo/Desktop/77777/7-3.srcs/sources_1/new/uart_data_tx.v:30]
+WARNING: [Synth 8-6014] Unused sequential element u_clock_divider/count_reg was removed.  [C:/Users/Lenovo/Desktop/77777/7-3.srcs/sources_1/new/clock_divider.v:19]
+WARNING: [Synth 8-6014] Unused sequential element u_keyboard_4x4/scan_counter_reg was removed.  [C:/Users/Lenovo/Desktop/77777/7-3.srcs/sources_1/new/keyboard_4x4.v:21]
+WARNING: [Synth 8-6014] Unused sequential element u_keyboard_4x4/debounce_counter_reg was removed.  [C:/Users/Lenovo/Desktop/77777/7-3.srcs/sources_1/new/keyboard_4x4.v:157]
+WARNING: [Synth 8-6014] Unused sequential element u_seg_display/scan_counter_reg was removed.  [C:/Users/Lenovo/Desktop/77777/7-3.srcs/sources_1/new/seg_display_controller.v:41]
+WARNING: [Synth 8-3917] design digital_lock_top has port DP0 driven by constant 0
+WARNING: [Synth 8-3917] design digital_lock_top has port DP1 driven by constant 0
+WARNING: [Synth 8-3331] design digital_lock_top has unconnected port sw_pin[5]
+INFO: [Synth 8-3886] merging instance 'u_uart_data_tx/uart_byte_tx/bps_DR_reg[0]' (FDP) to 'u_uart_data_tx/uart_byte_tx/bps_DR_reg[1]'
+INFO: [Synth 8-3886] merging instance 'u_uart_data_tx/uart_byte_tx/bps_DR_reg[1]' (FDP) to 'u_uart_data_tx/uart_byte_tx/bps_DR_reg[2]'
+INFO: [Synth 8-3886] merging instance 'u_uart_data_tx/uart_byte_tx/bps_DR_reg[2]' (FDP) to 'u_uart_data_tx/uart_byte_tx/bps_DR_reg[4]'
+INFO: [Synth 8-3886] merging instance 'u_uart_data_tx/uart_byte_tx/bps_DR_reg[3]' (FDC) to 'u_uart_data_tx/uart_byte_tx/bps_DR_reg[5]'
+INFO: [Synth 8-3886] merging instance 'u_uart_data_tx/uart_byte_tx/bps_DR_reg[4]' (FDP) to 'u_uart_data_tx/uart_byte_tx/bps_DR_reg[6]'
+INFO: [Synth 8-3886] merging instance 'u_uart_data_tx/uart_byte_tx/bps_DR_reg[5]' (FDC) to 'u_uart_data_tx/uart_byte_tx/bps_DR_reg[7]'
+INFO: [Synth 8-3886] merging instance 'u_uart_data_tx/uart_byte_tx/bps_DR_reg[6]' (FDP) to 'u_uart_data_tx/uart_byte_tx/bps_DR_reg[10]'
+INFO: [Synth 8-3886] merging instance 'u_uart_data_tx/uart_byte_tx/bps_DR_reg[7]' (FDC) to 'u_uart_data_tx/uart_byte_tx/bps_DR_reg[8]'
+INFO: [Synth 8-3886] merging instance 'u_uart_data_tx/uart_byte_tx/bps_DR_reg[8]' (FDC) to 'u_uart_data_tx/uart_byte_tx/bps_DR_reg[9]'
+INFO: [Synth 8-3886] merging instance 'u_uart_data_tx/uart_byte_tx/bps_DR_reg[9]' (FDC) to 'u_uart_data_tx/uart_byte_tx/bps_DR_reg[11]'
+INFO: [Synth 8-3886] merging instance 'u_uart_data_tx/uart_byte_tx/bps_DR_reg[10]' (FDP) to 'u_uart_data_tx/uart_byte_tx/bps_DR_reg[12]'
+INFO: [Synth 8-3886] merging instance 'u_uart_data_tx/uart_byte_tx/bps_DR_reg[11]' (FDC) to 'u_uart_data_tx/uart_byte_tx/bps_DR_reg[13]'
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (\u_uart_data_tx/uart_byte_tx/bps_DR_reg[12] )
+INFO: [Synth 8-3886] merging instance 'u_uart_data_tx/uart_byte_tx/bps_DR_reg[13]' (FDC) to 'u_uart_data_tx/uart_byte_tx/bps_DR_reg[14]'
+INFO: [Synth 8-3886] merging instance 'u_uart_data_tx/uart_byte_tx/bps_DR_reg[14]' (FDC) to 'u_uart_data_tx/uart_byte_tx/bps_DR_reg[15]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\u_uart_data_tx/uart_byte_tx/bps_DR_reg[15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\u_uart_data_tx/byte_tx_data_reg[7] )
+INFO: [Synth 8-3886] merging instance 'u_led_controller/led_reg[0]' (FDC) to 'u_led_controller/led_reg[1]'
+INFO: [Synth 8-3886] merging instance 'u_led_controller/led_reg[1]' (FDC) to 'u_led_controller/led_reg[2]'
+INFO: [Synth 8-3886] merging instance 'u_led_controller/led_reg[2]' (FDC) to 'u_led_controller/led_reg[3]'
+INFO: [Synth 8-3886] merging instance 'u_led_controller/led_reg[3]' (FDC) to 'u_led_controller/led_reg[4]'
+INFO: [Synth 8-3886] merging instance 'u_led_controller/led_reg[4]' (FDC) to 'u_led_controller/led_reg[5]'
+INFO: [Synth 8-3886] merging instance 'u_led_controller/led_reg[5]' (FDC) to 'u_led_controller/led_reg[6]'
+INFO: [Synth 8-3886] merging instance 'u_led_controller/led_reg[6]' (FDC) to 'u_led_controller/led_reg[7]'
+WARNING: [Synth 8-3332] Sequential element (failed_attempts_reg[3]) is unused and will be removed from module password_controller.
+WARNING: [Synth 8-3332] Sequential element (failed_attempts_reg[2]) is unused and will be removed from module password_controller.
+WARNING: [Synth 8-3332] Sequential element (failed_attempts_reg[1]) is unused and will be removed from module password_controller.
+WARNING: [Synth 8-3332] Sequential element (failed_attempts_reg[0]) is unused and will be removed from module password_controller.
+WARNING: [Synth 8-3332] Sequential element (attack_count_reg[7]) is unused and will be removed from module password_controller.
+WARNING: [Synth 8-3332] Sequential element (attack_count_reg[6]) is unused and will be removed from module password_controller.
+WARNING: [Synth 8-3332] Sequential element (attack_count_reg[5]) is unused and will be removed from module password_controller.
+WARNING: [Synth 8-3332] Sequential element (attack_count_reg[4]) is unused and will be removed from module password_controller.
+WARNING: [Synth 8-3332] Sequential element (attack_count_reg[3]) is unused and will be removed from module password_controller.
+WARNING: [Synth 8-3332] Sequential element (attack_count_reg[2]) is unused and will be removed from module password_controller.
+WARNING: [Synth 8-3332] Sequential element (attack_count_reg[1]) is unused and will be removed from module password_controller.
+WARNING: [Synth 8-3332] Sequential element (attack_count_reg[0]) is unused and will be removed from module password_controller.
+WARNING: [Synth 8-3332] Sequential element (blink_enable_reg) is unused and will be removed from module password_controller.
+WARNING: [Synth 8-3332] Sequential element (attack_defense_mode_reg) is unused and will be removed from module password_controller.
+WARNING: [Synth 8-3332] Sequential element (u_uart_data_tx/uart_byte_tx/bps_DR_reg[15]) is unused and will be removed from module digital_lock_top.
+WARNING: [Synth 8-3332] Sequential element (u_uart_data_tx/uart_byte_tx/bps_DR_reg[12]) is unused and will be removed from module digital_lock_top.
+WARNING: [Synth 8-3332] Sequential element (u_uart_data_tx/uart_byte_tx/data_byte_reg_reg[7]) is unused and will be removed from module digital_lock_top.
+WARNING: [Synth 8-3332] Sequential element (u_uart_data_tx/uart_tx_done_reg) is unused and will be removed from module digital_lock_top.
+WARNING: [Synth 8-3332] Sequential element (u_uart_data_tx/byte_tx_data_reg[7]) is unused and will be removed from module digital_lock_top.
+INFO: [Synth 8-3886] merging instance 'u_password_controller/led_blink_ctrl_reg[7]' (FDC) to 'u_password_controller/digit_blink_ctrl_reg[0]'
+INFO: [Synth 8-3886] merging instance 'u_password_controller/led_blink_ctrl_reg[6]' (FDC) to 'u_password_controller/digit_blink_ctrl_reg[1]'
+INFO: [Synth 8-3886] merging instance 'u_password_controller/led_blink_ctrl_reg[5]' (FDC) to 'u_password_controller/digit_blink_ctrl_reg[2]'
+INFO: [Synth 8-3886] merging instance 'u_password_controller/led_blink_ctrl_reg[4]' (FDC) to 'u_password_controller/digit_blink_ctrl_reg[3]'
+INFO: [Synth 8-3886] merging instance 'u_password_controller/led_blink_ctrl_reg[3]' (FDC) to 'u_password_controller/digit_blink_ctrl_reg[4]'
+INFO: [Synth 8-3886] merging instance 'u_password_controller/led_blink_ctrl_reg[2]' (FDC) to 'u_password_controller/digit_blink_ctrl_reg[5]'
+INFO: [Synth 8-3886] merging instance 'u_password_controller/led_blink_ctrl_reg[1]' (FDC) to 'u_password_controller/digit_blink_ctrl_reg[6]'
+INFO: [Synth 8-3886] merging instance 'u_password_controller/led_blink_ctrl_reg[0]' (FDC) to 'u_password_controller/digit_blink_ctrl_reg[7]'
+WARNING: [Synth 8-3332] Sequential element (long_press_reg) is unused and will be removed from module key_detector__3.
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:34 ; elapsed = 00:00:36 . Memory (MB): peak = 737.465 ; gain = 494.137
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:44 ; elapsed = 00:00:46 . Memory (MB): peak = 754.812 ; gain = 511.484
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:44 ; elapsed = 00:00:47 . Memory (MB): peak = 758.055 ; gain = 514.727
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:45 ; elapsed = 00:00:48 . Memory (MB): peak = 807.633 ; gain = 564.305
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:47 ; elapsed = 00:00:49 . Memory (MB): peak = 807.633 ; gain = 564.305
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:47 ; elapsed = 00:00:49 . Memory (MB): peak = 807.633 ; gain = 564.305
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:47 ; elapsed = 00:00:49 . Memory (MB): peak = 807.633 ; gain = 564.305
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:47 ; elapsed = 00:00:49 . Memory (MB): peak = 807.633 ; gain = 564.305
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:47 ; elapsed = 00:00:49 . Memory (MB): peak = 807.633 ; gain = 564.305
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:47 ; elapsed = 00:00:49 . Memory (MB): peak = 807.633 ; gain = 564.305
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+-------+------+
+|      |Cell   |Count |
++------+-------+------+
+|1     |BUFG   |     1|
+|2     |CARRY4 |   107|
+|3     |LUT1   |    17|
+|4     |LUT2   |   253|
+|5     |LUT3   |   125|
+|6     |LUT4   |   205|
+|7     |LUT5   |   352|
+|8     |LUT6   |   574|
+|9     |MUXF7  |    29|
+|10    |MUXF8  |    12|
+|11    |FDCE   |   673|
+|12    |FDPE   |    43|
+|13    |FDRE   |    10|
+|14    |FDSE   |    20|
+|15    |IBUF   |    20|
+|16    |OBUF   |    50|
++------+-------+------+
+
+Report Instance Areas: 
++------+------------------------+-----------------------+------+
+|      |Instance                |Module                 |Cells |
++------+------------------------+-----------------------+------+
+|1     |top                     |                       |  2491|
+|2     |  u_clock_divider       |clock_divider          |    68|
+|3     |  u_keyboard_4x4        |keyboard_4x4           |   122|
+|4     |  u_led_controller      |led_controller         |     9|
+|5     |  u_password_controller |password_controller    |  1692|
+|6     |    u_dec_key           |key_detector           |   214|
+|7     |    u_enter_key         |key_detector_0         |   197|
+|8     |    u_inc_key           |key_detector_1         |   207|
+|9     |    u_left_key          |key_detector_2         |   163|
+|10    |    u_right_key         |key_detector_3         |   163|
+|11    |  u_seg_display         |seg_display_controller |    78|
+|12    |  u_switch_debounce     |switch_debounce        |   208|
+|13    |  u_uart_data_rx        |uart_data_rx           |    97|
+|14    |  u_uart_data_tx        |uart_data_tx           |   146|
+|15    |    uart_byte_tx        |uart_byte_tx           |    75|
++------+------------------------+-----------------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:47 ; elapsed = 00:00:49 . Memory (MB): peak = 807.633 ; gain = 564.305
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 38 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:32 ; elapsed = 00:00:42 . Memory (MB): peak = 807.633 ; gain = 225.578
+Synthesis Optimization Complete : Time (s): cpu = 00:00:47 ; elapsed = 00:00:49 . Memory (MB): peak = 807.633 ; gain = 564.305
+INFO: [Project 1-571] Translating synthesized netlist
+INFO: [Netlist 29-17] Analyzing 168 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+INFO: [Common 17-83] Releasing license: Synthesis
+129 Infos, 71 Warnings, 16 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:50 ; elapsed = 00:00:54 . Memory (MB): peak = 807.633 ; gain = 577.258
+INFO: [Common 17-1381] The checkpoint 'C:/Users/Lenovo/Desktop/77777/7-3.runs/synth_1/digital_lock_top.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file digital_lock_top_utilization_synth.rpt -pb digital_lock_top_utilization_synth.pb
+report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.045 . Memory (MB): peak = 807.633 ; gain = 0.000
+INFO: [Common 17-206] Exiting Vivado at Wed Oct 15 10:51:04 2025...
