@@ -1,0 +1,2 @@
+dataset,solver,m,pca_dim,label_per_class,mean_acc,var_acc,time_s
+cifar10,baseline,2,100,5,0.1300,0.000200,3.8

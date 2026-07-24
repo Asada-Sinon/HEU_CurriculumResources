@@ -1,0 +1,4 @@
+dataset,solver,m,pca_dim,label_per_class,mean_acc,var_acc,time_s
+mnist,em,2,50,5,0.5434,0.001687,970.4
+mnist,em,2,50,10,0.5732,0.001907,789.4
+mnist,em,2,50,20,0.5821,0.001119,861.8

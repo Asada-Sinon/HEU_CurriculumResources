@@ -1,0 +1,228 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "plot compare figures (results & results_quick)",
+			"type": "shell",
+			"command": "python",
+			"args": [
+				"scripts/plot_results.py",
+				"--results-dir",
+				"results",
+				"--out-dir",
+				"figures"
+			],
+			"problemMatcher": [
+				"$eslint-stylish"
+			],
+			"group": "build"
+		},
+		{
+			"label": "plot compare figures (results_quick)",
+			"type": "shell",
+			"command": "python",
+			"args": [
+				"scripts/plot_results.py",
+				"--results-dir",
+				"results_quick",
+				"--out-dir",
+				"figures"
+			],
+			"group": "build"
+		},
+		{
+			"label": "plot compare figures merged",
+			"type": "shell",
+			"command": "python",
+			"args": [
+				"scripts/plot_results.py",
+				"--results-dir",
+				"results",
+				"results_quick",
+				"--out-dir",
+				"figures"
+			],
+			"group": "build"
+		},
+		{
+			"label": "plot compare figures (results & results_quick)",
+			"type": "shell",
+			"command": "python",
+			"args": [
+				"scripts/plot_results.py",
+				"--results-dir",
+				"results",
+				"results_quick",
+				"--out-dir",
+				"figures"
+			],
+			"group": "build"
+		},
+		{
+			"label": "plot ellipses synthetic quick",
+			"type": "shell",
+			"command": "python",
+			"args": [
+				"scripts/plot_ellipses.py",
+				"--dataset",
+				"synthetic",
+				"--solver",
+				"em",
+				"--m",
+				"2",
+				"--L",
+				"5",
+				"--pca-dim",
+				"2",
+				"--seed",
+				"0",
+				"--limit",
+				"2000"
+			]
+		},
+		{
+			"label": "plot ellipses synthetic quick",
+			"type": "shell",
+			"command": "python",
+			"args": [
+				"scripts/plot_ellipses.py",
+				"--dataset",
+				"synthetic",
+				"--solver",
+				"em",
+				"--m",
+				"2",
+				"--L",
+				"5",
+				"--pca-dim",
+				"2",
+				"--seed",
+				"0",
+				"--limit",
+				"2000"
+			]
+		},
+		{
+			"label": "plot ellipses synthetic quick",
+			"type": "shell",
+			"command": "python",
+			"args": [
+				"scripts/plot_ellipses.py",
+				"--dataset",
+				"synthetic",
+				"--solver",
+				"em",
+				"--m",
+				"2",
+				"--L",
+				"5",
+				"--pca-dim",
+				"2",
+				"--seed",
+				"0",
+				"--limit",
+				"2000"
+			]
+		},
+		{
+			"label": "plot ellipses mnist quick pca2",
+			"type": "shell",
+			"command": "python",
+			"args": [
+				"scripts/plot_ellipses.py",
+				"--dataset",
+				"mnist",
+				"--solver",
+				"em",
+				"--m",
+				"2",
+				"--L",
+				"5",
+				"--pca-dim",
+				"2",
+				"--seed",
+				"0",
+				"--limit",
+				"3000",
+				"--u-max",
+				"5000"
+			]
+		},
+		{
+			"label": "gen: pca/tsne scatters",
+			"type": "shell",
+			"command": "python",
+			"args": [
+				"scripts/plot_pca_features.py",
+				"--dataset",
+				"mnist",
+				"--data-dir",
+				"data",
+				"--method",
+				"pca",
+				"--limit-per-class",
+				"800",
+				"--seed",
+				"0"
+			],
+			"group": "build"
+		},
+		{
+			"label": "quick: gen supervised/unsupervised MNIST scatters",
+			"type": "shell",
+			"command": "python",
+			"args": [
+				"scripts/plot_pca_features.py",
+				"--dataset",
+				"mnist",
+				"--data-dir",
+				"data",
+				"--method",
+				"pca",
+				"--limit-per-class",
+				"800",
+				"--seed",
+				"0",
+				"--color-by",
+				"true",
+				";",
+				"python",
+				"scripts/plot_pca_features.py",
+				"--dataset",
+				"mnist",
+				"--data-dir",
+				"data",
+				"--method",
+				"pca",
+				"--limit-per-class",
+				"800",
+				"--seed",
+				"0",
+				"--color-by",
+				"kmeans",
+				";",
+				"python",
+				"scripts/plot_pca_features.py",
+				"--dataset",
+				"mnist",
+				"--data-dir",
+				"data",
+				"--method",
+				"pca",
+				"--limit-per-class",
+				"800",
+				"--seed",
+				"0",
+				"--color-by",
+				"model",
+				"--solver",
+				"em",
+				"--m",
+				"2",
+				"--L",
+				"5"
+			],
+			"group": "build"
+		}
+	]
+}

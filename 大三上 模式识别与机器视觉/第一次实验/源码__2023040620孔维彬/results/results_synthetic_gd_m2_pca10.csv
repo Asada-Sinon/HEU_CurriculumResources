@@ -1,0 +1,2 @@
+dataset,solver,m,pca_dim,label_per_class,mean_acc,var_acc,time_s
+synthetic,gd,2,10,5,0.4861,0.088341,0.4
