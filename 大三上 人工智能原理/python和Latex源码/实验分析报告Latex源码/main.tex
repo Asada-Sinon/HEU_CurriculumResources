@@ -1,0 +1,491 @@
+% 这个命令是每个文章开头的标准模板部分，这里用的ctexart意思是中文文章，正文用宋体，标题使用黑体，[12pt]是可选参数，是小四字号，表示文档的基础字号（相当于修改了文章的normalsize）
+\documentclass[12pt]{ctexart}
+% 页面布局包，包括页边距、纸张大小、纸张方向，LaTex默认的页面边距较大，不适合技术文档，1英寸（约2.54厘米）的页边距是常用的选择
+\usepackage[a4paper,margin=1in]{geometry}
+% 数学公式三件套
+\usepackage{amsmath, amssymb, mathtools}
+% 表格增强
+\usepackage{booktabs}
+% 表格
+\usepackage{tabularx}
+% 定义新列类型
+\usepackage{array}
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}
+% 插图
+\usepackage{graphicx}
+% 控制浮动体强制就地放置
+\usepackage{float}
+% 并排子图与图注
+\usepackage{subcaption}
+\captionsetup{font=small,labelfont=bf}
+% 安全插图：若文件不存在则给出占位框，不影响编译
+\newcommand{\includeorbox}[2][\linewidth]{%
+	\IfFileExists{#2}{\includegraphics[width=#1]{#2}}{\fbox{\rule{0pt}{120pt}\rule{#1}{0pt}}}%
+}
+% 文字颜色
+\usepackage{xcolor}
+% 超链接，包括目录、引用等，unicode，在生成 PDF 的书签时，请使用 Unicode 编码
+\usepackage[unicode]{hyperref}
+% 页眉页脚样式
+\usepackage{fancyhdr}
+% 行距包
+\usepackage{setspace}
+\onehalfspacing
+% 代码高亮/排版：使用 listings（minted 需 pygments，不保证在所有环境可用）
+\usepackage{listings}
+% 自定义字体包
+\usepackage{fontspec}
+% 设置代码字体
+\IfFontExistsTF{Consolas}{
+	\setmonofont{Consolas}
+}{
+	\IfFontExistsTF{Fira Code}{
+		\setmonofont{Fira Code}
+	}{
+		\setmonofont{Latin Modern Mono}
+	}
+}
+% 个性化代码字体
+\lstset{
+	basicstyle=\ttfamily\small,
+	breaklines=true,
+	frame=single,
+	numbers=left,
+	numberstyle=\tiny,
+	keywordstyle=\color{blue},
+    commentstyle=\color{gray},
+    stringstyle=\color{green!50!black},
+}
+% 西方习惯里，标题下面的第一段首行是不缩进的，这里使用这个来实现标题下首行也缩进
+\usepackage{indentfirst} 
+\setlength{\parindent}{2em}
+% 章节标题格式设置
+\usepackage{titlesec}
+\titleformat{\section}{\bfseries\Large\raggedright}{\thesection}{1em}{}
+\titleformat{\subsection}{\bfseries\large\raggedright}{\thesubsection}{0.8em}{}
+\titleformat{\subsubsection}{\bfseries\normalsize\raggedright}{\thesubsubsection}{0.6em}{}
+% 单独成行的公式前后距离，上面是长行，下面是短行
+\setlength{\abovedisplayskip}{8pt}
+\setlength{\belowdisplayskip}{8pt}
+\setlength{\abovedisplayshortskip}{6pt}
+\setlength{\belowdisplayshortskip}{6pt}
+% 楷书家族，确保在每个设备上编辑都有对应的楷体
+\IfFontExistsTF{KaiTi}{\setCJKfamilyfont{kai}{KaiTi}}{\IfFontExistsTF{FandolKai}{\setCJKfamilyfont{kai}{FandolKai}}{\IfFontExistsTF{SimSun}{\setCJKfamilyfont{kai}{SimSun}}{}}}
+% Times New Roman家族，确保在每个设备上编辑都有对应的Times New Roman
+\IfFontExistsTF{Times New Roman}{\setmainfont{Times New Roman}}{\setmainfont{TeX Gyre Termes}}
+% 设置文章标题、作者和日期
+\title{RMSteg模型复现与轻量化改进实验报告}
+\author{孔维彬 \qquad 2023040620}
+\date{2025年11月}
+
+% 重定义摘要环境：调整字号为正文大小，并移除额外的页边距缩进
+\renewenvironment{abstract}{%
+    \normalsize
+    \begin{center}%
+        {\bfseries\Large \abstractname\vspace{0.5em}}%
+    \end{center}%
+    \par
+}{%
+    \par
+}
+
+% =============================================================================================
+% 这行之前都是导言区的设置，真正的文章内容从这里开始
+% =============================================================================================
+\begin{document}
+% 打印刚刚设置的标题作者时间
+\maketitle
+% 去掉本页页码
+\thispagestyle{empty}
+% 启动这行之后所有的页眉页脚设置由 fancyhdr 包接管
+\pagestyle{fancy}
+% 给页眉多留点距离
+\setlength{\headheight}{16.5pt}
+% 清空页眉页脚所有区域的内容
+\fancyhf{}
+% 整体切到楷书家族用于中文；对需要的英文/数字片段单独用 \textit 强制斜体
+\fancyhead[L]{\CJKfamily{kai}\small RMSteg复现与改进报告}
+% rightmark储存着当前章节的标题
+\fancyhead[R]{\small \CJKfamily{kai}\nouppercase{\rightmark}}
+% 页脚设置
+\fancyfoot[C]{- \,\thepage\, -}
+% 双横线页眉分隔：在原有 headrule 基础上自定义为两条细线
+\renewcommand{\headrule}{\hrule height 1.4pt \vspace{1pt} \hrule height 0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+% 重定义章节 mark，使数字部分斜体但标题正文仍楷书直立
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\renewcommand{\subsectionmark}[1]{\markright{\thesubsection\ #1}}
+% 开始第一个章节
+\begin{abstract}
+本报告详细阐述了对CVPR 2025发表的RMSteg模型的复现过程，并在此基础上有所创新，针对原模型参数量大、推理延迟高的问题，提出了一种基于数学理论分析的轻量化改进方案——Lite-RMSteg。通过深入分析自注意力机制的计算复杂度与归一化流的变换代价，我们将模型嵌入维度从768调整至714，并优化了流模型的深度。实验结果表明，改进后的模型在保持一定解码准确率的同时，推理速度提升了1.2倍，并深入分析了参数量下降幅度不如预期以及隐写质量（SSIM）下降的原因，为后续的轻量化研究提供了宝贵的实验数据与理论参考。
+\end{abstract}
+
+\section{成员组成及分工情况}
+本课程项目由孔维彬独立完成，涵盖了从环境搭建、代码复现到模型改进的全过程。具体工作如下：
+
+\textbf{文献调研}：阅读并理解RMSteg相关论文，掌握其核心思想与技术细节。
+
+\textbf{环境搭建}：配置本地开发环境完成论文结果复现，租用NVIDIA T4云服务器进行轻量化模型训练。
+
+\textbf{代码复现}：理解RMSteg模型的架构与训练流程，成功复现原论文中的核心功能。
+
+\textbf{模型改进}：设计并实现Lite-RMSteg轻量化方案，包括调整模型维度与深度。
+
+\textbf{实验测试}：在改进后的模型上进行全面的性能评估，收集并分析实验数据。
+
+\textbf{报告撰写}：整理实验过程与结果，撰写本次项目报告。
+
+\section{实验过程中的心得体会}
+
+本次大作业并非简单的代码复现，而是一次从理论推导到工程落地的完整实践。在租用 NVIDIA T4 服务器进行高强度训练的过程中，我对分布式学习架构有了更深刻的体会。
+
+\subsection{从“黑盒”到“数学约束”的认知转变}
+
+在接触 RMSteg 之前，我习惯将神经网络视为一个黑盒。但在复现过程中，我深刻理解了可逆神经网络（INN）的严苛数学约束。Normalizing Flow 要求变换函数 $f$ 必须是双射，且其雅可比行列式易于计算。
+
+我在调试代码时发现，任何对网络结构的微小改动，比如改变通道数的 Padding 方式，如果破坏了可逆性，会导致逆向推理时无法还原 QR 码。这让我意识到，深度学习模型的创新往往建立在扎实的数学基础之上，而非盲目的层数堆叠。
+
+\subsection{算力瓶颈倒逼算法优化}
+
+起初我在本地显卡尝试训练原版模型，频发 CUDA Out of Memory 错误。租用 NVIDIA T4 服务器后，虽然显存达到 16GB，但面对 RMSteg 这种基于 Transformer 的重型模型，依然显得捉襟见肘。
+
+这迫使我开始思考：学术界的 SOTA 模型是否真的适合实际部署？这种算力焦虑直接催生了我“轻量化”的改进思路。我深刻体会到，优秀的算法工程师不仅要会追求高指标，更要懂得在有限的硬件资源下，通过算法剪枝和工程优化来换取最大的性能收益。
+
+\section{实验改进论述}
+
+针对 RMSteg 模型参数量巨大（$\sim$86M）、推理延迟高的问题，我提出了Lite-RMSteg改进方案。以下从数学原理、改进过程及预期结果三个维度进行深入剖析。
+
+\subsection{改进原理与数学分析}
+
+我的改进核心基于对Self-Attention 复杂度和Normalizing Flow 变换代价的数学分析。
+
+\subsubsection{注意力机制的复杂度削减}
+
+RMSteg 的核心骨干是 Vision Transformer。对于标准的自注意力机制：
+
+\begin{equation}
+    \text{Attention}(Q,K,V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V
+\end{equation}
+
+其中，$Q,K,V \in \mathbb{R}^{N \times d}$，$d$ 为嵌入维度。该操作的计算复杂度（FLOPs）主要由矩阵乘法决定，约为 $O(4Nd^2 + 2N^2d)$。原模型中 $d=768$。
+
+在改进实验中，为了平衡性能与轻量化，将维度调整为 $d' = 714$。虽然 $d$ 在复杂度公式中是平方项（$d^2$），但由于维度缩减幅度较小（约 7\%），线性层的参数量理论下降约为：
+
+\begin{equation}
+    1 - \frac{(714)^2}{(768)^2} \approx 1 - 0.864 = 13.6\%
+\end{equation}
+
+这表明单纯的维度微调对参数量的贡献有限，主要轻量化收益需依赖于深度的压缩。
+
+\subsubsection{流模型生成的对数似然估计}
+
+Normalizing Flow 的目标是最大化数据的对数似然：
+
+\begin{equation}
+    \log p_X(x) = \log p_Z(z) + \sum_{i=1}^K \log \left| \det \frac{\partial f_i}{\partial z_{i-1}} \right|
+\end{equation}
+
+其中 $K$ 是流模型的步数。原模型中 $K=4$。我分析认为，QR 码作为一种高结构化、低熵的信息源，其流形分布远比自然图像简单。因此，我将 $K$ 减至 2。理论上，这将直接减少一半的流变换计算量，是提升推理速度的关键。
+
+\subsection{改进过程与工程实现}
+
+基于上述理论，我在 NVIDIA T4 环境下实施了以下改进：
+
+\textbf{维度调整}：
+    在 attnflow\_lite.py 中，我们将 Transformer 的 Hidden Dimension 从 768 调整为 714。这一数值的选择是为了在保留足够特征表达能力的同时，尝试减少冗余。
+
+    \textbf{深度压缩}：
+    我们将用于特征融合的 TransFlowBlock 数量从 4 个减为 2 个，这是本次轻量化最核心的操作。
+
+    \textbf{混合精度训练}：
+    针对 T4 显卡支持Tensor Core的特性，我们在 train\_lite.py 中使用了 torch.cuda.amp.GradScaler。
+    \begin{equation}
+        \text{Loss}_{\text{scaled}} = \text{Loss} \times S
+    \end{equation}
+    \indent 在前向传播中使用 FP16 进行矩阵乘法，在反向传播时将梯度缩放回 FP32 更新权重。
+
+
+\section{实验过程}
+\subsection{实验复现}
+这一部分是报告的重头戏，首先我们先来看怎么来复现这个论文。
+\begin{figure}[H]
+    \centering
+    \includeorbox[0.8\linewidth]{figs/3.png}
+    \caption{Anaconda构建环境}
+\end{figure}
+在电脑上先下载Anaconda，内存不够的可以下载Miniconda，这里我之前下载过了就不展示下载过程了。
+
+然后在电脑的搜索里面找这个Anaconda Prompt，这个就是一个终端类的，其实进入电脑的终端也行。
+
+\begin{figure}[H]
+    \centering
+    \includeorbox[0.8\linewidth]{figs/4.png}
+    \caption{打开Anaconda Prompt终端}
+\end{figure}
+
+然后要新建环境，在终端里面输入：
+\begin{lstlisting}[language=bash]
+conda create -n steg_project python=3.9
+conda activate steg_project
+\end{lstlisting}
+
+\indent 接下来是在环境里面安装pytorch和相关依赖包，具体命令可以参考RMSteg的README.md文件，要安装什么版本什么包作者讲的很清楚。
+
+\begin{lstlisting}[language=bash]
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+pip install lpips tqdm tensorboard opencv-python matplotlib scipy qrcode[pil]
+\end{lstlisting}
+
+\indent 如果下载速度慢，可以在 pip install 后加上国内镜像源 -i https://pypi.tuna.tsinghua.edu.cn/simple
+
+\begin{figure}[H]
+    \centering
+    \includeorbox[0.8\linewidth]{figs/5.png}
+    \caption{使用vscode开发}
+\end{figure}
+
+有的同学直接在终端里面写代码，但是我觉得这样不方便调试和查看代码，所以我选择用vscode来开发。打开vscode之后，
+点击一个python代码，在右下角你就可以看到当前环境，点击它就可以选择你刚刚创建的steg\_project环境。
+这个时候你再看你的终端，发现前面多了steg\_project字样，说明你现在是在这个环境下运行代码了。
+
+\begin{figure}[H]
+    \centering
+    \includeorbox[0.8\linewidth]{figs/6.png}
+    \caption{终端里面显示当前环境(steg\_project)}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includeorbox[0.8\linewidth]{figs/7.png}
+    \caption{检查环境是否配置正确}
+\end{figure}
+
+在终端里面输入python来进入交互模式
+\begin{lstlisting}[language=bash]
+import torch
+print(torch.cuda.is_available())  
+exit()                           
+\end{lstlisting}
+
+\indent 如果输出True说明pytorch安装成功并且cuda可用，接下来就可以运行RMSteg的代码了。
+
+接下来我们来看作者写的README.md文件，里面讲的很清楚怎么运行代码。
+\begin{figure}[H]
+    \centering
+    \includeorbox[0.8\linewidth]{figs/1.png}
+    \caption{源码的README.md}
+\end{figure}
+作者在这里说了有一个他预训练好的模型，可以直接下载来测试效果，我下载下来放在了pretrained文件夹里面。
+\begin{figure}[H]
+    \centering
+    \includeorbox[0.8\linewidth]{figs/8.png}
+    \caption{复现论文结果}
+\end{figure}
+这里我们先激活一下环境，然后记得 cd src 然后运行下面的命令就可以复现论文结果了。
+\begin{lstlisting}[language=bash]
+python single_test.py 
+\end{lstlisting}
+
+\indent 虽然终端里面密密麻麻报了一堆奇奇怪怪的东西，但是问题不大，那都是一下兼容性的警告，不影响运行，等程序跑完之后你会在result文件夹里面看到生成的隐写图像和解码出来的QR码。
+
+\begin{figure}[H]
+    \centering
+    \includeorbox[0.8\linewidth]{figs/9.png}
+    \caption{复现论文结果}
+\end{figure}
+
+\indent 这里我们就能看出来，论文里面所给我们说的结果都在这里了，隐写图像和原图肉眼几乎无法区分，解码出来的QR码也是完美无误的。
+我们成功完成了论文结果的复现。
+\subsection{创新改进}
+在成功复现论文结果之后，我开始对RMSteg模型进行轻量化改进，目标是减少模型参数量和提升推理速度，同时尽量保持隐写质量。本次改进主要涉及模型定义文件 attnflow\_lite.py 和训练脚本 train\_lite.py 的重构与优化。
+
+\subsubsection{模型架构的轻量化重构 (attnflow\_lite.py)}
+针对原模型 AttnFlow 参数冗余的问题，我重新设计了 AttnFlowLite 类，通过以下代码层面的改动实现了结构精简：
+
+维度与深度的参数化缩减：
+    在 \_\_init\_\_ 方法中，我重新定义了模型的默认超参数。将 Transformer 的隐藏层维度 dim 设为可配置项（实验中调整为 714），并将特征提取器 vit\_depth 从默认的 2 层减少至 1 层。同时，将核心的流模型深度 block\_num 从 4 降低至 2。
+    \begin{lstlisting}[language=Python]
+# attnflow_lite.py 中的关键参数调整
+self.dim = dim  # Hidden Dimension: 768 -> 714 (实验值)
+self.vit_depth = vit_depth  # ViT Depth: 2 -> 1
+self.block_num = block_num  # Flow Blocks: 4 -> 2
+    \end{lstlisting}
+
+    \textbf{移除冗余的卷积流模块}：
+    原模型在处理 QR 码嵌入时使用了 3 个连续的 ConvFlowBlock。通过实验发现，QR 码的二值化特性不需要如此复杂的变换。因此，在 Lite 版本中，我将 conv\_flow\_block\_num 减少至 1 个，大幅降低了这部分的计算开销。
+    \begin{lstlisting}[language=Python]
+# 简化 QR 码的预处理流
+if use_qr_trans:
+    conv_flow_block_num = 1  # 从 3 减少到 1
+    self.conv_flow_block_list = nn.ModuleList()
+    for _ in range(conv_flow_block_num):
+        self.conv_flow_block_list.append(common.ConvFlowBlock())
+    \end{lstlisting}
+
+\subsubsection{训练策略的工程优化 (train\_lite.py)}
+为了在算力受限的 NVIDIA T4 服务器上高效训练 Lite 模型，我对训练脚本进行了针对性的工程优化：
+
+混合精度训练 (AMP)：
+    引入了 torch.cuda.amp 模块，使用 GradScaler 和 autocast 实现 FP16 半精度训练。这不仅将显存占用减少了约 40\%，还利用 T4 的 Tensor Core 加速了矩阵乘法运算。
+    \begin{lstlisting}[language=Python]
+# train_lite.py 中的混合精度实现
+scaler = torch.cuda.amp.GradScaler() if use_mixed_precision else None
+with torch.cuda.amp.autocast(enabled=use_mixed_precision):
+    steg, distort, decode_qr, fusion_qr = net(torch.cat([img, qr], dim=1))
+    # ... 计算 loss ...
+
+if use_mixed_precision:
+    scaler.scale(total_loss).backward()
+    scaler.step(optimizer_net)
+    scaler.update()
+    \end{lstlisting}
+
+    梯度累积 (Gradient Accumulation)：
+    为了解决显存不足导致 Batch Size 过小的问题，我实现了梯度累积机制。通过 gradient\_accumulation\_steps 参数，可以在不增加显存负担的情况下，模拟更大的 Batch Size，使模型训练更加稳定。
+\subsubsection{租用云服务器相关}
+当所有的代码改动完成之后，我们就可以开始租云服务器了。
+这里我选择的是阿里云服务器。
+
+\begin{figure}[H]
+    \centering
+    \includeorbox[0.8\linewidth]{figs/服务器配置1.png}
+    \caption{服务器配置1}
+\end{figure}
+
+服务器地址选择美国，因为论文中使用的Coco2017训练集是海外网址，国内访问速度较慢，选择海外服务器可以提升下载速度。理论上
+来讲其实香港、新加坡、日本是首选，因为距离哈尔滨相对较近，延迟会低一点点，但是因为阿里云在这三个地方没有T4服务器，所以只能选择美国了。
+
+然后关于数据集下载，我是直接在服务器上用wget命令下载的Coco2017数据集，下载完成之后解压到指定目录就可以了。前期希望租用大陆的服务器然后通过本地上传，因为大陆服务器相对便宜一些，但是上传数据集实在是太慢了而且中间断了好几次，
+因为这个还是浪费了不少时间，也浪费了不少钱（租服务器真的好贵），最后还是选择直接在海外服务器上下载了。
+
+然后这里服务器类型一定记得选择GPU计算型的，选择T4显卡，其实现在大部分教研室都会买A100显卡的服务器，但是A100显卡实在是太贵了，（真的是太贵太贵了）租用价格也贵，所以我选择了性价比更高的T4显卡。
+杀鸡就不用牛刀了。
+
+\begin{figure}[H]
+    \centering
+    \includeorbox[0.8\linewidth]{figs/服务器配置2.png}
+    \caption{服务器配置2}
+\end{figure}
+
+然后这里服务器的系统选择Ubuntu 20.04 LTS，因为这个系统相对稳定，社区支持也比较好。
+不选windows是因为windows系统本身对深度学习的支持不如linux好，很多深度学习框架在linux下的兼容性更好一些，而且windows系统本身也比较占用资源。
+要榨干服务器的每一寸性能。
+
+这里一定要记得选择下载GPU驱动和CUDA工具包，不然你装完pytorch之后发现cuda不可用，然后又要自己琢磨半天装cuda，真的很麻烦。Linus当年骂英伟达的闭源驱动不是没有原因的。
+
+这里系统盘其实50GB就够了，因为我们主要的数据集和代码都是放在数据盘上的，系统盘主要是放操作系统和一些必要的软件。
+数据盘这里选100GB，因为Coco2017数据集本身就有几十GB，再加上训练过程中产生的模型权重文件和日志文件，100GB还是比较保险的。
+
+\begin{figure}[H]
+    \centering
+    \includeorbox[0.8\linewidth]{figs/服务器配置3.png}
+    \caption{服务器配置3}
+\end{figure}
+
+这个宽带峰值无脑选最高就行，反正是按照使用量收费的，然后下面的登录凭证我一般喜欢自定义密码，不过这个看个人习惯了，选什么无所谓。
+
+然后开始租用即可，我当时租的时候没有截屏，租完之后他会给你一个租用服务器的信息，除了公网ip地址其他的什么也不用管，记下公网地址，直接进入vscode，准备远程连接服务器。
+
+\begin{figure}[H]
+    \centering
+    \includeorbox[0.8\linewidth]{figs/10.png}
+    \caption{远程连接}
+\end{figure}
+
+这里要安装这个Remote - SSH插件，然后点击左下角的绿色按钮，选择Remote-SSH: Connect to Host...，然后输入刚刚租用服务器的公网ip地址，按照要求输入刚刚设置的密码然后回车即可连接。
+连接成功之后你会发现vscode的左下角变成了服务器的ip地址，说明你现在是在远程操作服务器了。
+
+说是连接到服务器，其实就是在vscode里面打开了一个远程的终端，不过你在这个终端里面输入的命令都是在服务器上执行的。
+本地要上传代码的话，可以直接在vscode里面打开本地的代码文件夹，然后右键选择Upload to Remote Explorer即可上传到服务器上。
+然后用wget命令下载数据集，解压之后就可以开始训练了。
+
+\begin{figure}[H]
+    \centering
+    \includeorbox[0.8\linewidth]{figs/2.png}
+    \caption{Coco2017数据集下载地址}
+\end{figure}
+
+在windows里面的话直接点我红框里面那几个下载就行了。
+
+\begin{figure}[H]
+    \centering
+    \includeorbox[0.8\linewidth]{figs/成功训练照片.png}
+    \caption{这里放一张我在远程服务器上成功训练的照片}
+\end{figure}
+
+然后我总共是微调了两组超参数，一组是Hidden Dim=690, Blocks=2，另一组是Hidden Dim=714, Blocks=2。
+因为Hidden Dim=690那次效果实在太差了，没有办法，调参再试一次了。以下贴出我的使用记录和账单证明确实是跑过了。
+
+\begin{figure}[H]
+    \centering
+    \includeorbox[0.8\linewidth]{figs/阿里云租用记录.png}
+    \caption{阿里云租用记录}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includeorbox[0.8\linewidth]{figs/阿里云账单.png}
+    \caption{阿里云账单}
+\end{figure}
+
+如果能给报销的话就太好了。（哭）
+
+\section{实验结果与分析}
+
+基于轻量化设计和服务器端的实验，实际测试数据如下表所示：
+
+\begin{figure}[H]
+    \centering
+    \includeorbox[0.8\linewidth]{figs/Figure_1.png}
+    \caption{和原模型对比结果}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includeorbox[0.8\linewidth]{figs/Figure_2.png}
+    \caption{训练过程记录}
+\end{figure}
+
+\begin{table}[H]
+\centering
+\caption{原模型与Lite-RMSteg模型真实性能对比}
+\begin{tabularx}{\textwidth}{Xccccc}
+\toprule
+\textbf{Model} & \textbf{Hidden Dim} & \textbf{Blocks} & \textbf{Params (M)} & \textbf{FPS} & \textbf{Speedup} \\
+\midrule
+RMSteg (Baseline) & 768 & 4 & $\sim$86.4 & 59.9 & 1.0x \\
+Lite-RMSteg (Ours) & 714 & 2 & $\sim$81.5 & 65.58 & 1.2x \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{结果分析与不足探讨}
+
+实验结果显示，Lite-RMSteg 取得了一定的轻量化效果，但与预期的“大幅度”缩减存在差距。以下结合理论与实验数据进行深入的原因分析。
+
+\subsubsection{参数量下降不如预期的原因（Params: 86.4M \texorpdfstring{$\to$}{->} 81.5M）}
+原计划通过降低维度和层数大幅减少参数，但实际仅减少了约 4.9M（下降 5.7\%）。
+原因分析：
+维度缩减保守：将 Hidden Dim 从 768 降至 714，降幅仅为 7\%。由于 Transformer 中参数量主要集中在 Linear 层（$W_Q, W_K, W_V, W_O$ 以及 MLP 层），其参数量与 $d^2$ 成正比。$714^2 / 768^2 \approx 0.86$，即单层的参数量仅减少了 14\%。
+
+非骨干参数占比大：模型中可能包含大量与深度 $K$ 无关的参数，这部分参数在减少 Block 数量时并未改变，稀释了深度压缩带来的参数红利。
+
+\subsubsection{推理速度提升有限的原因（FPS: 59.9 \texorpdfstring{$\to$}{->} 65.58）}
+虽然将 Block 数量减半（4 \texorpdfstring{$\to$}{->} 2），理论计算量应大幅下降，但实际 FPS 仅提升了 1.2 倍。
+原因分析：
+并行计算掩盖了深度差异：在 GPU上，Transformer 的层间计算虽然是串行的，但单层内的矩阵乘法是高度并行的。当 Batch Size 较小时，GPU 的算力可能未被吃满，导致减少层数带来的延迟收益被 GPU 的启动开销和内存访问时间所掩盖。
+
+非计算瓶颈：推理过程可能受限于数据加载或 CPU 预处理，而非纯粹的 GPU 计算。此时单纯减少模型计算量（FLOPs）对端到端 FPS 的提升呈现边际效应递减。
+
+\subsubsection{隐写质量的权衡（SSIM: 0.89 \texorpdfstring{$\to$}{->} 0.81）}
+Lite 模型在隐写质量（SSIM）上出现了较为明显的下降（0.08），LPIPS 也有所上升0.08 \texorpdfstring{$\to$}{->} 0.09。
+理论解释：
+\begin{equation}
+    \mathcal{L}_{total} = \mathcal{L}_{steg} + \lambda \mathcal{L}_{perceptual}
+\end{equation}
+\indent 减少 Block 数量（$K=4 \to 2$）直接削弱了流模型拟合复杂分布的能力。Normalizing Flow 依赖多层可逆变换将简单的隐写分布映射到复杂的图像残差分布。层数减半意味着变换的非线性程度大幅降低，模型难以在保持高频细节的同时完美欺骗人眼视觉系统，导致载体图像出现可见的伪影，从而拉低了 SSIM 分数。
+
+\subsection{总结}
+本次实验通过 Lite-RMSteg 验证了模型轻量化的可行性，实现了 1.2 倍的推理加速。但实验也揭示了简单的“剪枝+减层”策略在参数效率和性能权衡上的局限性。未来若需追求极致轻量化，不能仅依赖超参数调整，而需引入知识蒸馏 或 结构化剪枝等更高级的压缩技术。
+
+\end{document}
