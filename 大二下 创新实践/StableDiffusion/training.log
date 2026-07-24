@@ -1,0 +1,74 @@
+2025-05-02 14:03:05,877 - ERROR - 未知的图像类型: <class 'docarray.array.memory.DocumentArrayInMemory'>
+2025-05-02 14:07:03,410 - ERROR - 未知的图像类型: <class 'docarray.array.memory.DocumentArrayInMemory'>
+2025-05-02 14:10:55,326 - ERROR - 未知的图像类型: <class 'docarray.array.memory.DocumentArrayInMemory'>
+2025-05-02 14:17:51,102 - ERROR - 未知结果类型: <class 'docarray.array.memory.DocumentArrayInMemory'>
+2025-05-02 14:25:10,536 - ERROR - 处理DocumentArray中的图像时出错: cannot identify image file <_io.BytesIO object at 0x000002409F2B9300>
+2025-05-02 14:31:41,635 - ERROR - 无法从Document提取图像，所有方法都失败
+2025-05-02 14:37:37,581 - ERROR - numpy转换失败: Document has no attribute `to_numpy`
+2025-05-02 14:44:54,401 - ERROR - 使用save_inference_model方法失败: Module stable_diffusion does not support exporting models in Paddle Inference format.
+2025-05-02 14:44:54,447 - WARNING - 无法为 建筑物 保存图像，尝试直接保存结果对象
+2025-05-02 14:53:06,400 - ERROR - 处理 建筑物 时出错: Image data of dtype object cannot be converted to float
+2025-05-02 14:57:52,884 - ERROR - 保存JSON失败: 13 validation errors for PydanticDocument
+adjacency
+  Field required [type=missing, input_value={'id': '9ddc887cb68f3bb4c...cture, city buildings'}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+blob
+  Field required [type=missing, input_value={'id': '9ddc887cb68f3bb4c...cture, city buildings'}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+tensor
+  Field required [type=missing, input_value={'id': '9ddc887cb68f3bb4c...cture, city buildings'}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+text
+  Field required [type=missing, input_value={'id': '9ddc887cb68f3bb4c...cture, city buildings'}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+weight
+  Field required [type=missing, input_value={'id': '9ddc887cb68f3bb4c...cture, city buildings'}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+offset
+  Field required [type=missing, input_value={'id': '9ddc887cb68f3bb4c...cture, city buildings'}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+location
+  Field required [type=missing, input_value={'id': '9ddc887cb68f3bb4c...cture, city buildings'}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+embedding
+  Field required [type=missing, input_value={'id': '9ddc887cb68f3bb4c...cture, city buildings'}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+modality
+  Field required [type=missing, input_value={'id': '9ddc887cb68f3bb4c...cture, city buildings'}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+evaluations
+  Field required [type=missing, input_value={'id': '9ddc887cb68f3bb4c...cture, city buildings'}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+scores
+  Field required [type=missing, input_value={'id': '9ddc887cb68f3bb4c...cture, city buildings'}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+chunks
+  Field required [type=missing, input_value={'id': '9ddc887cb68f3bb4c...cture, city buildings'}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+matches
+  Field required [type=missing, input_value={'id': '9ddc887cb68f3bb4c...cture, city buildings'}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+2025-05-02 14:57:52,886 - ERROR - 处理 建筑物 时出错: unhashable type: 'dict'
+2025-05-02 15:06:15,040 - WARNING - 获取属性 content_hash 失败: unhashable type: 'dict'
+2025-05-02 15:12:30,734 - WARNING - 无法从Document 0 的已知属性中提取图像
+2025-05-02 15:35:26,653 - WARNING - 无法从Document 0 的已知属性中提取图像
+2025-05-02 15:38:38,194 - ERROR - 使用diffusers失败: [WinError 127] 找不到指定的程序。 Error loading "D:\anaconda\envs\Paddle\Lib\site-packages\torch\lib\shm.dll" or one of its dependencies.
+2025-05-02 15:38:38,197 - ERROR - Traceback (most recent call last):
+  File "c:\Users\Lenovo\Desktop\StableDiffusion\test.py", line 156, in use_diffusers
+    import torch
+  File "D:\anaconda\envs\Paddle\Lib\site-packages\torch\__init__.py", line 270, in <module>
+    _load_dll_libraries()
+  File "D:\anaconda\envs\Paddle\Lib\site-packages\torch\__init__.py", line 253, in _load_dll_libraries
+    raise err
+OSError: [WinError 127] 找不到指定的程序。 Error loading "D:\anaconda\envs\Paddle\Lib\site-packages\torch\lib\shm.dll" or one of its dependencies.
+
+2025-05-02 15:49:03,639 - ERROR - 使用diffusers失败: [WinError 127] 找不到指定的程序。 Error loading "D:\anaconda\envs\Paddle\Lib\site-packages\torch\lib\shm.dll" or one of its dependencies.
+2025-05-02 15:49:03,643 - ERROR - Traceback (most recent call last):
+  File "c:\Users\Lenovo\Desktop\StableDiffusion\test.py", line 156, in use_diffusers
+    import torch
+  File "D:\anaconda\envs\Paddle\Lib\site-packages\torch\__init__.py", line 270, in <module>
+    _load_dll_libraries()
+  File "D:\anaconda\envs\Paddle\Lib\site-packages\torch\__init__.py", line 253, in _load_dll_libraries
+    raise err
+OSError: [WinError 127] 找不到指定的程序。 Error loading "D:\anaconda\envs\Paddle\Lib\site-packages\torch\lib\shm.dll" or one of its dependencies.
+
